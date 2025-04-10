@@ -4,23 +4,25 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Candidate } from './PostCard';
-import { toast } from 'sonner';
+import { Check } from 'lucide-react';
 
 interface CandidateProfileProps {
   candidate: Candidate;
   showVoteButton: boolean;
+  onVote?: () => void;
+  isSelected?: boolean;
 }
 
-const CandidateProfile = ({ candidate, showVoteButton }: CandidateProfileProps) => {
+const CandidateProfile = ({ 
+  candidate, 
+  showVoteButton, 
+  onVote,
+  isSelected = false 
+}: CandidateProfileProps) => {
   const { name, department, year, photo, manifesto, status } = candidate;
 
-  const handleVote = () => {
-    toast.success(`Vote cast for ${name}`);
-    // Here you would implement actual voting logic
-  };
-
   return (
-    <Card className="overflow-hidden hover:shadow-md transition-shadow">
+    <Card className={`overflow-hidden hover:shadow-md transition-shadow ${isSelected ? 'border-2 border-green-500' : ''}`}>
       <div className="relative">
         <div className="absolute right-2 top-2">
           <Badge 
@@ -47,7 +49,19 @@ const CandidateProfile = ({ candidate, showVoteButton }: CandidateProfileProps) 
       </CardContent>
       {showVoteButton && status === 'Approved' && (
         <CardFooter>
-          <Button onClick={handleVote} className="w-full">Vote</Button>
+          <Button 
+            onClick={onVote} 
+            className="w-full"
+            variant={isSelected ? "outline" : "default"}
+            disabled={isSelected}
+          >
+            {isSelected ? (
+              <span className="flex items-center">
+                <Check className="h-4 w-4 mr-2" />
+                Voted
+              </span>
+            ) : 'Vote'}
+          </Button>
         </CardFooter>
       )}
     </Card>

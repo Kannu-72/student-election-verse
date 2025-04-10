@@ -18,10 +18,22 @@ interface PostCardProps {
   postTitle: string;
   candidates: Candidate[];
   isVotingActive?: boolean;
+  onVote?: (candidateId: string, candidateName: string) => void;
+  selectedCandidateId?: string;
 }
 
-const PostCard = ({ postTitle, candidates, isVotingActive = false }: PostCardProps) => {
+const PostCard = ({ 
+  postTitle, 
+  candidates, 
+  isVotingActive = false,
+  onVote,
+  selectedCandidateId
+}: PostCardProps) => {
   const [activeTab, setActiveTab] = useState<string>('nominations');
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
 
   return (
     <Card className="w-full h-full">
@@ -31,7 +43,12 @@ const PostCard = ({ postTitle, candidates, isVotingActive = false }: PostCardPro
           {candidates.length} candidate{candidates.length !== 1 ? 's' : ''} for this position
         </CardDescription>
       </CardHeader>
-      <Tabs defaultValue="nominations" className="w-full">
+      <Tabs 
+        defaultValue="nominations" 
+        className="w-full"
+        value={isVotingActive ? 'voting' : 'nominations'}
+        onValueChange={handleTabChange}
+      >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="nominations">Nominations</TabsTrigger>
           <TabsTrigger value="voting" disabled={!isVotingActive}>
@@ -59,6 +76,8 @@ const PostCard = ({ postTitle, candidates, isVotingActive = false }: PostCardPro
                   key={candidate.id} 
                   candidate={candidate} 
                   showVoteButton={true}
+                  onVote={() => onVote && onVote(candidate.id, candidate.name)}
+                  isSelected={selectedCandidateId === candidate.id}
                 />
               ))}
             </div>

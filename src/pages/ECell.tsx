@@ -58,7 +58,7 @@ const ECell = () => {
           department: 'Marketing',
           year: '2nd Year',
           photo: 'https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
-          manifesto: 'Aiming to increase E-Cell's visibility through strategic digital marketing and partnerships with business media.',
+          manifesto: "Aiming to increase E-Cell's visibility through strategic digital marketing and partnerships with business media.",
           status: 'Approved',
         },
         {

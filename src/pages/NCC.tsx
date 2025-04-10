@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import PostCard from '@/components/PostCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
+import { Candidate } from '@/components/PostCard';
 
 const NCC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,7 +28,7 @@ const NCC = () => {
           year: '4th Year',
           photo: 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
           manifesto: 'Dedicated to strengthening discipline and leadership qualities among cadets through rigorous training programs.',
-          status: 'Approved',
+          status: 'Approved' as const,
         },
         {
           id: '2',
@@ -36,7 +37,7 @@ const NCC = () => {
           year: '3rd Year',
           photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
           manifesto: "Focusing on enhanced academic integration with NCC activities and promoting women's leadership in cadets.",
-          status: 'Approved',
+          status: 'Approved' as const,
         },
       ],
     },
@@ -51,7 +52,7 @@ const NCC = () => {
           year: '3rd Year',
           photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
           manifesto: 'Committed to streamlining administrative processes and improving coordination with college administration.',
-          status: 'Approved',
+          status: 'Approved' as const,
         },
       ],
     },
@@ -66,7 +67,7 @@ const NCC = () => {
           year: '4th Year',
           photo: 'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
           manifesto: 'Planning to introduce innovative physical training methods and increase participation in inter-college competitions.',
-          status: 'Pending',
+          status: 'Pending' as const,
         },
       ],
     },
